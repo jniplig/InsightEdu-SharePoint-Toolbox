@@ -1,0 +1,32 @@
+[
+  {
+    "DisplayName": "Trip Name",
+    "InternalName": "TripName",
+    "Type": "Text",
+    "Required": true
+  },
+  {
+    "DisplayName": "Trip Date",
+    "InternalName": "TripDate",
+    "Type": "DateTime",
+    "Required": true
+  },
+  {
+    "DisplayName": "Lead Teacher",
+    "InternalName": "LeadTeacher",
+    "Type": "User",
+    "Required": true
+  },
+  {
+    "DisplayName": "Student Count",
+    "InternalName": "StudentCount",
+    "Type": "Number",
+    "Required": false
+  },
+  {
+    "DisplayName": "Status",
+    "InternalName": "TripStatus",
+    "Type": "Choice",
+    "Required": true
+  }
+]

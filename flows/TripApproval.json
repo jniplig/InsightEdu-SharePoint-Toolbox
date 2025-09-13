@@ -1,0 +1,56 @@
+{
+  "name": "Trip Approval (Starter)",
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2019-05-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {
+      "When_item_created": {
+        "type": "OpenApiConnectionWebhook",
+        "inputs": {
+          "host": {
+            "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+          },
+          "operationId": "SubscribeWebhookTrigger",
+          "parameters": {
+            "subscriptionUrl": "@{listWebhookTrigger()}",
+            "dataset": "https://YOURTENANT.sharepoint.com/sites/InsightEduClient",
+            "table": "Trip Requests"
+          }
+        }
+      }
+    },
+    "actions": {
+      "Switch_Stage": {
+        "type": "Switch",
+        "expression": "@triggerOutputs()?['body/TripStage']",
+        "cases": {
+          "Draft": {
+            "actions": {}
+          },
+          "HOD Review": {
+            "actions": {
+              "Notify_HOD": {
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+                  },
+                  "operationId": "SendEmailV2",
+                  "parameters": {
+                    "to": "hod@yourtenant.onmicrosoft.com",
+                    "subject": "Trip awaiting HOD review",
+                    "body": "A trip request needs your review."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "default": {
+          "actions": {}
+        }
+      }
+    }
+  }
+}

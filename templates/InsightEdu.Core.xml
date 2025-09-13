@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2019/09/ProvisioningSchema">
+  <pnp:Preferences Generator="InsightEdu StarterKit" />
+  <pnp:Templates>
+    <pnp:ProvisioningTemplate ID="InsightEdu.Core" Version="1.0">
+      <pnp:Features>
+        <pnp:WebFeatures>
+          <!-- Document Set feature -->
+          <pnp:Feature ID="3bae86a2-776d-499d-9db8-fa4cdc7884f8" />
+        </pnp:WebFeatures>
+      </pnp:Features>
+      <pnp:SiteFields>
+        <pnp:Field ID="{4F9F3C46-9FD1-4F70-8B0C-0E2B2B7B4D11}" Type="Text" Name="PolicyCategory" DisplayName="Policy Category" />
+        <pnp:Field ID="{A5F2B0A6-9B57-4B2E-AF77-ED7A19F40B9B}" Type="DateTime" Name="ReviewCycleEnd" DisplayName="Review Cycle End" Format="DateOnly" />
+        <pnp:Field ID="{B0F9E44C-815E-4F4D-9B70-7E1E6AE4E8E9}" Type="Choice" Name="InspectionRAG" DisplayName="Inspection RAG">
+          <pnp:Choices>
+            <pnp:Choice>Red</pnp:Choice>
+            <pnp:Choice>Amber</pnp:Choice>
+            <pnp:Choice>Green</pnp:Choice>
+          </pnp:Choices>
+        </pnp:Field>
+      </pnp:SiteFields>
+      <pnp:ContentTypes>
+        <pnp:ContentType ID="0x0101A1" Name="Policy Document" Group="InsightEdu Content Types">
+          <pnp:FieldRefs>
+            <pnp:FieldRef ID="{4F9F3C46-9FD1-4F70-8B0C-0E2B2B7B4D11}" />
+            <pnp:FieldRef ID="{A5F2B0A6-9B57-4B2E-AF77-ED7A19F40B9B}" />
+          </pnp:FieldRefs>
+        </pnp:ContentType>
+        <pnp:ContentType ID="0x0120D520" Name="Trip Pack (Document Set)" Group="InsightEdu Content Types">
+          <pnp:DocumentSetTemplate>
+            <pnp:AllowedContentTypes>
+              <pnp:AllowedContentType ContentTypeID="0x0101" />
+              <pnp:AllowedContentType ContentTypeID="0x0101A1" />
+            </pnp:AllowedContentTypes>
+            <pnp:WelcomePageFields>
+              <pnp:WelcomePageField>{4F9F3C46-9FD1-4F70-8B0C-0E2B2B7B4D11}</pnp:WelcomePageField>
+              <pnp:WelcomePageField>{A5F2B0A6-9B57-4B2E-AF77-ED7A19F40B9B}</pnp:WelcomePageField>
+            </pnp:WelcomePageFields>
+            <pnp:DefaultDocuments>
+              <pnp:DefaultDocument FileSourcePath="Templates/RiskAssessment.docx" TargetFileName="RiskAssessment.docx" />
+              <pnp:DefaultDocument FileSourcePath="Templates/ConsentForm.docx" TargetFileName="ConsentForm.docx" />
+            </pnp:DefaultDocuments>
+          </pnp:DocumentSetTemplate>
+        </pnp:ContentType>
+        <pnp:ContentType ID="0x010100A2" Name="Inspection Evidence" Group="InsightEdu Content Types">
+          <pnp:FieldRefs>
+            <pnp:FieldRef ID="{B0F9E44C-815E-4F4D-9B70-7E1E6AE4E8E9}" />
+          </pnp:FieldRefs>
+        </pnp:ContentType>
+      </pnp:ContentTypes>
+      <pnp:Files>
+        <pnp:File Src="Templates/RiskAssessment.docx" Folder="SiteAssets/Templates" Overwrite="true" />
+        <pnp:File Src="Templates/ConsentForm.docx" Folder="SiteAssets/Templates" Overwrite="true" />
+      </pnp:Files>
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+</pnp:Provisioning>

@@ -1,0 +1,53 @@
+{
+  "name": "Policy Lifecycle Approval (Starter)",
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2019-05-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {
+      "When_an_item_is_created_or_modified": {
+        "type": "OpenApiConnectionWebhook",
+        "inputs": {
+          "host": {
+            "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+          },
+          "operationId": "SubscribeWebhookTrigger",
+          "parameters": {
+            "subscriptionUrl": "@{listWebhookTrigger()}",
+            "dataset": "https://YOURTENANT.sharepoint.com/sites/InsightEduClient",
+            "table": "Inspection Evidence"
+          }
+        }
+      }
+    },
+    "actions": {
+      "Condition_ReviewDue": {
+        "type": "If",
+        "expression": {
+          "lessOrEquals": [
+            "@utcNow()",
+            "@{triggerOutputs()?['body/ReviewDue']}"
+          ]
+        },
+        "actions": {
+          "Start_Approval": {
+            "type": "OpenApiConnection",
+            "inputs": {
+              "host": {
+                "apiId": "/providers/Microsoft.PowerApps/apis/shared_approvals"
+              },
+              "operationId": "CreateApproval",
+              "parameters": {
+                "approvalType": "ApproveReject",
+                "title": "Policy review due",
+                "assignedTo": "you@yourtenant.onmicrosoft.com",
+                "details": "Please review policy."
+              }
+            }
+          }
+        },
+        "else": {}
+      }
+    }
+  }
+}

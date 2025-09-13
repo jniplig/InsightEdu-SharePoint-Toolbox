@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/row-formatting.schema.json",
+  "children": [
+    {
+      "elmType": "span",
+      "style": {
+        "padding": "2px 8px",
+        "border-radius": "12px",
+        "display": "inline-block",
+        "border": "1px solid",
+        "border-color": "=if([$TripStage]=='Draft','#888', if([$TripStage]=='HOD Review','#605e5c', if([$TripStage]=='SLT Approval','#004e8c', '#0078d4')))"
+      },
+      "txtContent": "=[$TripStage]"
+    }
+  ]
+}

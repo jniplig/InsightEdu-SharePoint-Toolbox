@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/row-formatting.schema.json",
+  "children": [
+    {
+      "elmType": "span",
+      "attributes": {
+        "iconName": "=if([$RAGStatus] == 'Green','CheckboxComposite','Warning')"
+      },
+      "style": {
+        "margin-right": "6px",
+        "color": "=if([$RAGStatus]=='Green','#107c10', if([$RAGStatus]=='Amber','#ffaa44','#d13438'))"
+      }
+    },
+    {
+      "elmType": "span",
+      "txtContent": "=[$RAGStatus]"
+    }
+  ]
+}

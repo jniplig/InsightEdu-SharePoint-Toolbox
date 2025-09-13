@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/row-formatting.schema.json",
+  "additionalRowClass": "=if([$StartDateTime] <= @now && [$EndDateTime] >= @now, 'sp-css-backgroundColor-successBackground50', '')",
+  "children": [
+    {
+      "elmType": "div",
+      "txtContent": "=@currentField",
+      "style": {
+        "font-weight": "600"
+      }
+    },
+    {
+      "elmType": "div",
+      "txtContent": "='Phase: ' + [$Phase] + ' | ' + text([$StartDateTime], 'g') + ' - ' + text([$EndDateTime], 'g')"
+    }
+  ]
+}
