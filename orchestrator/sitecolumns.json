@@ -1,0 +1,46 @@
+{
+  "Columns": [
+    {
+      "DisplayName": "Department",
+      "InternalName": "IE_Department",
+      "Type": "Text",
+      "Group": "InsightEdu"
+    },
+    {
+      "DisplayName": "Subject",
+      "InternalName": "IE_Subject",
+      "Type": "TaxonomyFieldType",
+      "Group": "InsightEdu"
+    },
+    {
+      "DisplayName": "Year Group",
+      "InternalName": "IE_YearGroup",
+      "Type": "TaxonomyFieldType",
+      "Group": "InsightEdu"
+    },
+    {
+      "DisplayName": "Term",
+      "InternalName": "IE_Term",
+      "Type": "TaxonomyFieldType",
+      "Group": "InsightEdu"
+    },
+    {
+      "DisplayName": "Assessment Type",
+      "InternalName": "IE_AssessmentType",
+      "Type": "TaxonomyFieldType",
+      "Group": "InsightEdu"
+    },
+    {
+      "DisplayName": "SEN Flag",
+      "InternalName": "IE_SENFlag",
+      "Type": "Boolean",
+      "Group": "InsightEdu"
+    },
+    {
+      "DisplayName": "Trip ID",
+      "InternalName": "IE_TripID",
+      "Type": "Text",
+      "Group": "InsightEdu"
+    }
+  ]
+}

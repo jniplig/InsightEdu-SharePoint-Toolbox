@@ -1,0 +1,40 @@
+name: Deploy (Manual)
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Target environment (Dev/Test/Prod)'
+        required: true
+        default: 'Dev'
+        type: choice
+        options: [Dev, Test, Prod]
+
+jobs:
+  deploy:
+    runs-on: windows-latest
+    environment: ${{ inputs.environment }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup PowerShell
+        uses: PowerShell/PowerShell@v1
+        with:
+          version: '7.4.x'
+      - name: Install modules
+        run: pwsh -c "Install-Module PnP.PowerShell -Scope CurrentUser -Force"
+      - name: Configure certificate
+        if: ${{ inputs.environment != 'Dev' }}
+        shell: pwsh
+        run: |
+          $bytes = [System.Convert]::FromBase64String($env:PFX_BASE64)
+          $path = \"$env:USERPROFILE\\deploy.pfx\"
+          [IO.File]::WriteAllBytes($path, $bytes)
+          Write-Host \"Wrote certificate to $path\"
+      - name: Provision
+        shell: pwsh
+        env:
+          PFX_BASE64: ${{ secrets.PFX_BASE64 }}
+          PFX_PASSWORD: ${{ secrets.PFX_PASSWORD }}
+        run: |
+          cd orchestrator
+          ./provision.ps1 -Environment ${{ inputs.environment }} -Verbose

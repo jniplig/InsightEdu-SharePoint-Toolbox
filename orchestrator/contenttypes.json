@@ -1,0 +1,28 @@
+{
+  "ContentTypes": [
+    {
+      "Name": "CurriculumPlan",
+      "Group": "InsightEdu",
+      "Description": "Curriculum planning document",
+      "Parent": "Document"
+    },
+    {
+      "Name": "AssessmentItem",
+      "Group": "InsightEdu",
+      "Description": "Assessment resource",
+      "Parent": "Document"
+    },
+    {
+      "Name": "TripProposal",
+      "Group": "InsightEdu",
+      "Description": "Trip proposal form",
+      "Parent": "Item"
+    },
+    {
+      "Name": "RFQ",
+      "Group": "InsightEdu",
+      "Description": "Request for quotation",
+      "Parent": "Item"
+    }
+  ]
+}

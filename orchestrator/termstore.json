@@ -1,0 +1,71 @@
+{
+  "Groups": [
+    {
+      "Name": "InsightEdu Taxonomy",
+      "Description": "Education core sets",
+      "Sets": [
+        {
+          "Name": "Subjects",
+          "Terms": [
+            "Arabic",
+            "Islamic Studies",
+            "English",
+            "PE",
+            "Maths",
+            "Science",
+            "Humanities",
+            "Arts",
+            "ICT"
+          ]
+        },
+        {
+          "Name": "YearGroup",
+          "Terms": [
+            "FS1",
+            "FS2",
+            "Year 1",
+            "Year 2",
+            "Year 3",
+            "Year 4",
+            "Year 5",
+            "Year 6",
+            "Year 7",
+            "Year 8",
+            "Year 9",
+            "Year 10",
+            "Year 11",
+            "Year 12",
+            "Year 13"
+          ]
+        },
+        {
+          "Name": "Phase",
+          "Terms": [
+            "Early Years",
+            "Primary",
+            "Secondary",
+            "Whole School"
+          ]
+        },
+        {
+          "Name": "Term",
+          "Terms": [
+            "Term 1",
+            "Term 2",
+            "Term 3"
+          ]
+        },
+        {
+          "Name": "AssessmentType",
+          "Terms": [
+            "Formative",
+            "Summative",
+            "Practical",
+            "Exam",
+            "Coursework"
+          ]
+        }
+      ]
+    }
+  ]
+}

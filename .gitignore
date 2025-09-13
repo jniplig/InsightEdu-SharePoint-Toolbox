@@ -1,0 +1,29 @@
+# Node / SPFx
+node_modules/
+dist/
+lib/
+temp/
+*.sppkg
+.yo-rc.json
+
+# Python/venv
+.venv/
+__pycache__/
+
+# PowerShell / outputs
+/out/
+*.psd1
+*.pfx
+*.pnp
+*.snk
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local env config
+orchestrator/env.config.json

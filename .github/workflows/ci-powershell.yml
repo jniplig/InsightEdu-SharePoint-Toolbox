@@ -1,0 +1,22 @@
+name: CI - PowerShell
+
+on:
+  push:
+    paths:
+      - 'orchestrator/**.ps1'
+      - 'audit/**.ps1'
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup PowerShell
+        uses: PowerShell/PowerShell@v1
+        with:
+          version: '7.4.x'
+      - name: Install PSScriptAnalyzer
+        run: pwsh -c "Install-Module PSScriptAnalyzer -Scope CurrentUser -Force"
+      - name: Analyze scripts
+        run: pwsh -c "Invoke-ScriptAnalyzer -Path orchestrator,audit -Recurse -Severity Warning -ReportSummary"
