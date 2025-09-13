@@ -27,3 +27,11 @@ Thumbs.db
 
 # Local env config
 orchestrator/env.config.json
+# --- secrets / local certs ---
+pnp-cert/*.pfx
+pnp-cert/*.b64
+pnp-cert/*.pem
+
+# --- local outputs / logs ---
+audit/out/
+*.log
