@@ -3,7 +3,6 @@
 ## PnP Connect
 ```powershell
 Connect-PnPOnline -Url "https://netorgft18192557-admin.sharepoint.com" `
-Connect-PnPOnline: Unable to connect using provided arguments
 Connect-PnPOnline -Url $clientUrl `
 Connect-PnPOnline -Url "https://netorgft18192557.sharepoint.com/sites/Client1" `
 Connect-PnPOnline -Url "https://netorgft18192557.sharepoint.com/sites/ed-slt" `
