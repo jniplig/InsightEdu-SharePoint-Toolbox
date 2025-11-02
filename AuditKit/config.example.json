@@ -1,0 +1,12 @@
+{
+  "TenantShortName": "netorgft18192557",
+  "RootUrl": "https://insightedu.sharepoint.com",
+  "IncludeOneDriveSites": false,
+  "OutDir": "./output",
+  "SitesCsv": "./output/Sites.csv",
+  "ExcludeUrlPatterns": [
+    "-my.sharepoint.com",
+    "/personal/"
+  ],
+  "TopN": 500
+}

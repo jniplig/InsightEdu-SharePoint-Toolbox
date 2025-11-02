@@ -1,0 +1,18 @@
+
+# Build & local output
+output/
+*.pbix
+*.pbit
+*.xlsx
+*.xls
+*.zip
+*.bak
+*.tmp
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+venv/
+.venv/
+node_modules/
