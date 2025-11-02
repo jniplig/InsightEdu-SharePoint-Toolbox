@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Setup PowerShell
-        uses: PowerShell/PowerShell@v1
+        uses: PowerShell/PowerShell@v2
         with:
           version: '7.4.x'
       - name: Install modules
