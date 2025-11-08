@@ -1,21 +1,21 @@
 ## InsightEdu Tenant — Known-Good Values (pinned)
 
-- **App (client) ID:** 7e17c5ea-493f-4654-a5b5-dd94419ba15d
+- **App (client) ID:** 
 - **Tenant domain (use this in -Tenant):** 
-etorgft18192557.onmicrosoft.com
-- **SharePoint Admin URL:** https://netorgft18192557-admin.sharepoint.com
+.onmicrosoft.com
+- **SharePoint Admin URL:** https://-admin.sharepoint.com
 - **PFX path (local/CI):** C:\InsightEdu\pnp-cert\InsightEdu-PnP-Orchestrator.pfx  
   *(Password kept locally & in GitHub environment secrets; never commit it.)*
 
 **Known-good connect snippet**
 `powershell
-7e17c5ea-493f-4654-a5b5-dd94419ba15d    = "7e17c5ea-493f-4654-a5b5-dd94419ba15d"
-netorgft18192557.onmicrosoft.com   = "netorgft18192557.onmicrosoft.com"         # domain or GUID, NOT a URL
+7e17c5ea    = "7e17c5ea"
+.onmicrosoft.com   = ".onmicrosoft.com"         # domain or GUID, NOT a URL
 C:\InsightEdu\pnp-cert\InsightEdu-PnP-Orchestrator.pfx      = "C:\InsightEdu\pnp-cert\InsightEdu-PnP-Orchestrator.pfx"
-https://netorgft18192557-admin.sharepoint.com = "https://netorgft18192557-admin.sharepoint.com"
+https://-admin.sharepoint.com = "https://-admin.sharepoint.com"
 System.Security.SecureString  = Read-Host "PnP cert password" -AsSecureString
 
-Connect-PnPOnline -Url https://netorgft18192557-admin.sharepoint.com -Tenant netorgft18192557.onmicrosoft.com -ClientId 7e17c5ea-493f-4654-a5b5-dd94419ba15d 
+Connect-PnPOnline -Url https://-admin.sharepoint.com -Tenant .onmicrosoft.com -ClientId 7e17c5ea
   -CertificatePath C:\InsightEdu\pnp-cert\InsightEdu-PnP-Orchestrator.pfx -CertificatePassword System.Security.SecureString
 Get-PnPTenantSite | Select -First 3 Url, Title
 Common errors & fixes
