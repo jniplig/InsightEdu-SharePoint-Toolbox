@@ -72,7 +72,7 @@ $AppId  = "<APP_CLIENT_ID>"               # from Step 2
 $Tenant = "insightedu.onmicrosoft.com"
 $Pfx    = "$env:USERPROFILE\InsightEdu\pnp-cert\InsightEdu-PnP-Orchestrator.pfx"
 
-Connect-PnPOnline -Url "https://netorgft18192557-admin.sharepoint.com" `
+Connect-PnPOnline -Url "https://-admin.sharepoint.com" `
   -Tenant $Tenant -ClientId $AppId `
   -CertificatePath $Pfx -CertificatePassword $certPwd
 
