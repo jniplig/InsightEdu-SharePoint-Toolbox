@@ -2,7 +2,7 @@
 
 **Purpose:** Prepare for retirement of legacy MFA/SSPR by piloting the **Authentication Methods policy** with a small group before tenant-wide migration.
 
-**Tenant:** netorgft18192557.onmicrosoft.com  
+**Tenant:** .onmicrosoft.com  
 **Last updated:** 2025-09-13 07:45 UTC
 
 ---
