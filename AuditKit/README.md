@@ -28,8 +28,8 @@ A lean, repeatable **inventory and governance audit** for SharePoint Online / On
 ## Config (`config.json`)
 ```json
 {
-  "TenantShortName": "netorgft18192557",
-  "RootUrl": "https://insightedu.sharepoint.com",
+  "TenantShortName": "yourtenant",
+  "RootUrl": "https://yoursite.sharepoint.com",
   "IncludeOneDriveSites": false,
   "OutDir": "./output",
   "SitesCsv": "./output/Sites.csv",
