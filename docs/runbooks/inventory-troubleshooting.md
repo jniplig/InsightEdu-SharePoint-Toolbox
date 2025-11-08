@@ -1,7 +1,7 @@
 # Runbook: SharePoint Inventory (PnP app-only) — Known‑good patterns & troubleshooting
 
-**Tenant:** `netorgft18192557.onmicrosoft.com`  
-**App (client) ID:** `7e17c5ea-493f-4654-a5b5-dd94419ba15d`  
+**Tenant:** `.onmicrosoft.com`  
+**App (client) ID:** ``  
 **Last updated:** 2025-09-13 07:57 UTC
 
 ---
@@ -14,10 +14,10 @@
 
 ## Known‑good connect values (pin for this tenant)
 ```powershell
-$AppId    = "7e17c5ea-493f-4654-a5b5-dd94419ba15d"
-$Tenant   = "netorgft18192557.onmicrosoft.com"      # domain or GUID (not a URL)
+$AppId    = ""
+$Tenant   = ".onmicrosoft.com"      # domain or GUID (not a URL)
 $Pfx      = "C:\InsightEdu\pnp-cert\InsightEdu-PnP-Orchestrator.pfx"
-$AdminUrl = "https://netorgft18192557-admin.sharepoint.com"
+$AdminUrl = "https://-admin.sharepoint.com"
 $certPwd  = Read-Host "PnP cert password" -AsSecureString
 Connect-PnPOnline -Url $AdminUrl -Tenant $Tenant -ClientId $AppId `
   -CertificatePath $Pfx -CertificatePassword $certPwd
@@ -26,7 +26,7 @@ Connect-PnPOnline -Url $AdminUrl -Tenant $Tenant -ClientId $AppId `
 ## Correct site filter (avoid multiline `-and`)
 ```powershell
 $sites = Import-Csv ".\audit\out\sites.csv" |
-  Where-Object { ($_.Url -match '^https://netorgft18192557\.sharepoint\.com($|/sites/)') -and ($_.Url -notmatch '/search') } |
+  Where-Object { ($_.Url -match '^https://\.sharepoint\.com($|/sites/)') -and ($_.Url -notmatch '/search') } |
   Select-Object -ExpandProperty Url
 ```
 
@@ -50,13 +50,13 @@ function Get-IEduSiteComplexity {
       ClassicPages=$classic; Error="" }
   } catch { [pscustomobject]@{ SiteUrl=$Url; Lists=$null; Libraries=$null; UniqueCT=$null; ClassicPages=$null; Error=$_.Exception.Message } }
 }
-$sites  = Import-Csv ".\audit\out\sites.csv" | Where-Object { ($_.Url -match '^https://netorgft18192557\.sharepoint\.com($|/sites/)') -and ($_.Url -notmatch '/search') } | Select-Object -Expand Url
+$sites  = Import-Csv ".\audit\out\sites.csv" | Where-Object { ($_.Url -match '^https://\.sharepoint\.com($|/sites/)') -and ($_.Url -notmatch '/search') } | Select-Object -Expand Url
 $result = $sites | ForEach-Object { Get-IEduSiteComplexity $_ }
 $result | Export-Csv ".\audit\out\site-complexity.csv" -NoTypeInformation
 ```
 
 ## Pre‑scan checklist (to prevent repeat issues)
-- Entra app lives in **netorgft18192557.onmicrosoft.com** and has **admin consent** for:  
+- Entra app lives in **.onmicrosoft.com** and has **admin consent** for:  
   - Graph (Application): `Sites.ReadWrite.All`, `TermStore.ReadWrite.All`, `Group.ReadWrite.All`, `User.Read.All`  
   - SharePoint (Application): `Sites.FullControl.All`
 - Use **PowerShell 7** and `PnP.PowerShell` (latest).
@@ -65,7 +65,7 @@ $result | Export-Csv ".\audit\out\site-complexity.csv" -NoTypeInformation
 
 ## One‑site sanity test (ED‑PE example)
 ```powershell
-$TestSite = "https://netorgft18192557.sharepoint.com/sites/ed-pe"
+$TestSite = "https://.sharepoint.com/sites/ed-pe"
 Connect-PnPOnline -Url $TestSite -Tenant $Tenant -ClientId $AppId -CertificatePath $Pfx -CertificatePassword $certPwd
 Get-PnPWeb | Select Url, Title
 (Get-PnPList -Includes BaseType | Measure-Object).Count
